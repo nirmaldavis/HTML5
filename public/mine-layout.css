@@ -1,0 +1,130 @@
+header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    height: 80px;
+    
+}
+header>h1 {
+ display:inline;
+ margin-top:15px;    
+}
+header>img {
+    float:right;
+    padding-right: 10px;
+    transform: rotate(7deg);
+/*    animation: mymove 5s infinite;*/
+    position: relative;
+}
+@keyframes mymove {
+    from {right: 0px;}
+    to {right: 20px;}
+}
+nav {
+/*    float: left;*/
+    background-color: #eeeeee;
+/*    line-height: 30px;*/
+/*
+    height: 300px;
+    width: 100px;
+*/
+/*
+    padding: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+*/
+    height: 30px;
+
+}
+nav ul {
+    list-style-type: none;
+    margin: 0px;
+}
+nav ul li {
+/*    float: left;*/
+    display: inline;
+/*    background-color: burlywood;*/
+    
+/*
+    width: 50px;
+    border-style: solid;
+    border-color: indianred;
+*/
+}
+
+nav ul li a {
+    display: inline;
+    width: 40px;
+}
+
+
+section {
+    float: right;
+    /*    width: 350px;*/
+/*    padding: 10px;*/
+    
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+    padding-left: 10px;
+    padding-bottom: 10px;
+/*    border-style: groove;*/
+    
+}
+
+#searchDiv {
+ margin: 5px;   
+}
+
+#searchDiv span {
+/*    background-color: aquamarine;*/
+    margin-top: 5px;
+}
+
+#searchDiv div {
+    margin-top: 5px;
+}
+
+#searchBox {
+ margin-right: 10px;   
+}
+#searchBox::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+#searchDiv div input{
+    vertical-align: middle;
+}
+
+#tasksCount label {
+     font-style: italic;   
+}
+
+article {
+/*    background-color: beige;*/
+
+/*
+    -webkit-column-count: 2; 
+    -moz-column-count: 2; 
+    column-count: 2;
+*/
+}
+footer {
+    clear: both;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+body {
+ background-color: azure;   
+}
+
+#todo-icon {
+    float: right;
+}
+
+.task-status {
+     float: right;
+}

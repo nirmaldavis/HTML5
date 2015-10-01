@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+    <link rel="stylesheet" type="text/css" href="mine-layout.css">
+    <script src="angular.js"></script>
+    <script src="my-script.js"></script>
+</head>
+
+<body ng-app="myApp">
+
+    <div ng-controller="myController">
+
+        <header>
+            <br>
+            <h1>To Do List</h1>
+            <img src="images/to-do-list-pic.jpg" height="50" width="30" />
+        </header>
+        <nav>
+           <ul>
+               <li><a href="">Work</a></li>
+               <li><a href="">Personal</a></li>
+               <li><a href="">Learn</a></li>
+               <li><a href="">Others</a></li>
+           </ul>
+
+        </nav>
+
+        <section>
+            <div id="searchDiv">
+              <label for="">Search</label>
+<!--              ng-change="searchTasks()"-->
+               <input type="text" name="" id="searchBox" placeholder="Type here to search"  ng-model="searchTask.name"/>
+               <div id="tasksCount">
+                   <label>Total number of tasks : </label>
+                   <span>{{tasks.length}}</span>    
+               </div>
+               <div>
+                  <span>Completed</span>
+                   <input type="checkbox" name="" id="" ng-model="searchTask.completed">  
+                   <input type="button" value="Show All" ng-click="searchTask.completed=undefined">
+               </div>
+               
+               <div id="sortOderDiv">
+                   <label for="">Order By : </label>
+                   <select name="" id="" ng-model="tasksSortOrder.type">
+                       <option >name</option>
+                       <option>description</option>
+                       <option>completed</option>
+                   </select>
+                   <label for="">Descending ? : </label>
+                   <input type="checkbox" name="" id="" ng-model="tasksSortOrder.desc">
+               </div>
+               
+           </div>
+            <h1>Personal</h1>
+            <p>
+                List of Personal items to do.
+            </p>
+
+            <!--
+          <ul>
+              <li>Home Loan</li>
+              <li>BESCOM</li>
+              <li>ICICI Credit Card</li>
+              <li>BSNL</li>
+              <li>Airtel</li>
+          </ul>
+-->
+<!--                   ng-repeat="task in tasks | filter:{name : searchText , description : searchText}" -->           
+            <ul>
+                <li 
+                    ng-repeat="task in tasks | filter:searchTask | orderBy : tasksSortOrder.type : tasksSortOrder.desc" 
+                    ng-click=setCurrentTask(task)
+                    filter><a href="">{{task.name}}</a></li>
+            </ul>
+
+        </section>
+
+        <article>
+
+            <h3>{{currentTask.name}}</h3>
+            <input type="checkbox" name="" id="" ng-model="currentTask.completed" class="task-status">
+            
+            <p>{{currentTask.description}}</p>
+            
+            <hr/>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis in quia veritatis minima officiis ipsum optio, autem omnis et velit consequatur sit provident molestiae, illum dicta quaerat error praesentium eum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem assumenda nisi quasi deserunt dicta quibusdam pariatur facere nesciunt recusandae, laborum consectetur praesentium voluptate. Neque minus ab a ratione ipsum voluptatem.
+            </p>
+        </article>
+
+        <footer>
+            Copyright @ {{author}}
+        </footer>
+
+    </div>
+</body>
+
+</html>
