@@ -19,42 +19,48 @@
             <img src="images/to-do-list-pic.jpg" height="50" width="30" />
         </header>
         <nav>
-           <ul>
-               <li><a href="">Work</a></li>
-               <li><a href="">Personal</a></li>
-               <li><a href="">Learn</a></li>
-               <li><a href="">Others</a></li>
-           </ul>
+            <ul>
+                <li><a href="">Work</a></li>
+                <li><a href="">Personal</a></li>
+                <li><a href="">Learn</a></li>
+                <li><a href="">Others</a></li>
+            </ul>
 
         </nav>
 
         <section>
             <div id="searchDiv">
-              <label for="">Search</label>
-<!--              ng-change="searchTasks()"-->
-               <input type="text" name="" id="searchBox" placeholder="Type here to search"  ng-model="searchTask.name"/>
-               <div id="tasksCount">
-                   <label>Total number of tasks : </label>
-                   <span>{{tasks.length}}</span>    
-               </div>
-               <div>
-                  <span>Completed</span>
-                   <input type="checkbox" name="" id="" ng-model="searchTask.completed">  
-                   <input type="button" value="Show All" ng-click="searchTask.completed=undefined">
-               </div>
-               
-               <div id="sortOderDiv">
-                   <label for="">Order By : </label>
-                   <select name="" id="" ng-model="tasksSortOrder.type">
-                       <option >name</option>
-                       <option>description</option>
-                       <option>completed</option>
-                   </select>
-                   <label for="">Descending ? : </label>
-                   <input type="checkbox" name="" id="" ng-model="tasksSortOrder.desc">
-               </div>
-               
-           </div>
+                <label for="">Search</label>
+                <!--              ng-change="searchTasks()"-->
+                <input type="text" name="" id="searchBox" placeholder="Type here to search" ng-model="searchTask.name" />
+                <div id="tasksCount">
+                    <label>Total number of tasks : </label>
+
+                    <!--<span>{{ (tasks | filter:{completed : true}).length }} / {{tasks.length}}</span>    -->
+
+                    <!--                    {{tasks|completedTasksCount}} -->
+
+                    <span> {{tasks | completedTasksCount}} / {{tasks.length}}</span>
+
+                </div>
+                <div>
+                    <span>Completed</span>
+                    <input type="checkbox" name="" id="" ng-model="searchTask.completed">
+                    <input type="button" value="Show All" ng-click="searchTask.completed=undefined">
+                </div>
+
+                <div id="sortOderDiv">
+                    <label for="">Order By : </label>
+                    <select name="" id="" ng-model="tasksSortOrder.type">
+                        <option>name</option>
+                        <option>description</option>
+                        <option>completed</option>
+                    </select>
+                    <label for="">Descending ? : </label>
+                    <input type="checkbox" name="" id="" ng-model="tasksSortOrder.desc">
+                </div>
+
+            </div>
             <h1>Personal</h1>
             <p>
                 List of Personal items to do.
@@ -69,12 +75,9 @@
               <li>Airtel</li>
           </ul>
 -->
-<!--                   ng-repeat="task in tasks | filter:{name : searchText , description : searchText}" -->           
+            <!--                   ng-repeat="task in tasks | filter:{name : searchText , description : searchText}" -->
             <ul>
-                <li 
-                    ng-repeat="task in tasks | filter:searchTask | orderBy : tasksSortOrder.type : tasksSortOrder.desc" 
-                    ng-click=setCurrentTask(task)
-                    filter><a href="">{{task.name}}</a></li>
+                <li ng-repeat="task in tasks | filter:searchTask | orderBy : tasksSortOrder.type : tasksSortOrder.desc" ng-click=setCurrentTask(task) filter><a href="">{{task.name}}</a></li>
             </ul>
 
         </section>
@@ -82,10 +85,12 @@
         <article>
 
             <h3>{{currentTask.name}}</h3>
-            <input type="checkbox" name="" id="" ng-model="currentTask.completed" class="task-status">
-            
-            <p>{{currentTask.description}}</p>
-            
+            <input type="checkbox" name="" id="" ng-model="currentTask.completed" class="task-status" ng-show="currentTask !== undefined">
+
+            <p>{{currentTask.description | trimText:taskDescLength}}</p>
+
+            <input type="range" ng-model="taskDescLength" min="0" max="100" ng-show="currentTask !== undefined">
+
             <hr/>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis in quia veritatis minima officiis ipsum optio, autem omnis et velit consequatur sit provident molestiae, illum dicta quaerat error praesentium eum.
